@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Learning Platform</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fc;
+      color: #1e293b;
+    }
+
+    header {
+      background: #172554;
+      color: white;
+      padding: 24px 8%;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+    }
+
+    nav {
+      background: #1e40af;
+      padding: 14px 8%;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 24px;
+      font-weight: bold;
+    }
+
+    .hero {
+      padding: 55px 8%;
+      background: linear-gradient(120deg, #dbeafe, #eef2ff);
+    }
+
+    .hero h2 {
+      font-size: 34px;
+      margin-top: 0;
+      color: #172554;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .section {
+      padding: 30px 8%;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px #00000010;
+      border: 1px solid #e2e8f0;
+    }
+
+    .card h3 {
+      color: #1d4ed8;
+      margin-top: 0;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: 0;
+      padding: 12px 18px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #output {
+      margin-top: 16px;
+      padding: 16px;
+      background: #eff6ff;
+      border-radius: 8px;
+      min-height: 48px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 22px;
+      text-align: center;
+      background: #172554;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        display: inline-block;
+        margin: 5px 12px 5px 0;
+      }
+
+      .hero h2 {
+        font-size: 27px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>DSA Learning Platform</h1>
+    <p>Learn Data Structures and Algorithms interactively</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#topics">Learn DSA</a>
+    <a href="#practice">Practice</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h2>Learn Data Structures & Algorithms</h2>
+    <p>
+      Understand important programming concepts through simple explanations,
+      interactive demonstrations, and practice questions.
+    </p>
+    <a href="#topics"><button>Start Learning</button></a>
+  </section>
+
+  <section class="section" id="topics">
+    <h2>Explore Data Structures</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Arrays</h3>
+        <p>Learn how data is stored and accessed using indexes.</p>
+        <button onclick="showTopic('Arrays')">Explore</button>
+      </div>
+
+      <div class="card">
+        <h3>Linked Lists</h3>
+        <p>Understand nodes, links, insertion, and deletion.</p>
+        <button onclick="showTopic('Linked Lists')">Explore</button>
+      </div>
+
+      <div class="card">
+        <h3>Stacks</h3>
+        <p>Learn the Last In, First Out (LIFO) principle.</p>
+        <button onclick="showTopic('Stacks')">Explore</button>
+      </div>
+
+      <div class="card">
+        <h3>Queues</h3>
+        <p>Learn the First In, First Out (FIFO) principle.</p>
+        <button onclick="showTopic('Queues')">Explore</button>
+      </div>
+
+      <div class="card">
+        <h3>Trees</h3>
+        <p>Explore parent nodes, child nodes, and tree structures.</p>
+        <button onclick="showTopic('Trees')">Explore</button>
+      </div>
+
+      <div class="card">
+        <h3>Graphs</h3>
+        <p>Discover vertices, edges, and graph traversal.</p>
+        <button onclick="showTopic('Graphs')">Explore</button>
+      </div>
+    </div>
+
+    <div id="output">Select a topic above to learn more.</div>
+  </section>
+
+  <section class="section" id="practice">
+    <div class="card">
+      <h2>Quick Practice</h2>
+      <p>Which data structure follows the LIFO principle?</p>
+
+      <button onclick="checkAnswer('Stack')">Stack</button>
+      <button onclick="checkAnswer('Queue')">Queue</button>
+      <button onclick="checkAnswer('Array')">Array</button>
+
+      <p id="quizResult" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>DSA Learning Platform | College Mini Project</p>
+  </footer>
+
+  <script>
+    function showTopic(topic) {
+      const descriptions = {
+        "Arrays": "An array stores elements in indexed positions. Example: [10, 20, 30].",
+        "Linked Lists": "A linked list consists of nodes connected by links.",
+        "Stacks": "A stack follows LIFO: the last element added is the first removed.",
+        "Queues": "A queue follows FIFO: the first element added is the first removed.",
+        "Trees": "A tree organizes data in parent-child relationships.",
+        "Graphs": "A graph represents connections between vertices using edges."
+      };
+
+      document.getElementById("output").innerHTML =
+        "<h3>" + topic + "</h3><p>" + descriptions[topic] + "</p>";
+    }
+
+    function checkAnswer(answer) {
+      const result = document.getElementById("quizResult");
+
+      if (answer === "Stack") {
+        result.textContent = "Correct! A stack follows Last In, First Out (LIFO).";
+        result.style.color = "green";
+      } else {
+        result.textContent = "Not quite. Try again! Remember: LIFO means Last In, First Out.";
+        result.style.color = "crimson";
+      }
+    }
+  </script>
+</body>
+</html>
